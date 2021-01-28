@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm'
+import { Column, Entity, PrimaryGeneratedColumn, OneToMany } from 'typeorm'
+import Like from './Like'
 
 @Entity('photo')
 export default class Photo {
@@ -12,5 +13,10 @@ export default class Photo {
     description: string
 
     @Column()
-    like: number
+    date: string
+
+    @OneToMany(() => Like, like => like.photo, {
+      cascade: ['insert', 'update']
+    })
+    likes: Like[]
 }
