@@ -21,8 +21,8 @@ export class photo1611696414647 implements MigrationInterface {
           type: 'varchar'
         },
         {
-          name: 'like',
-          type: 'integer'
+          name: 'date',
+          type: 'string'
         }
       ]
     }))
