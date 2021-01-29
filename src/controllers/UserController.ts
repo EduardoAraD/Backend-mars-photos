@@ -33,7 +33,7 @@ export default {
       const UserRepository = getRepository(User)
       const userDB = await UserRepository.findOne({ name: data.name })
       if (userDB) {
-        return response.status(400).send({ error: 'Existing name' })
+        return response.json(UserView.render(userDB))
       }
 
       const userCreate = UserRepository.create(data)

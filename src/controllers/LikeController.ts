@@ -32,9 +32,9 @@ export default {
         user: userDB
       }
       const likeCreate = LikeRepository.create(dataLike)
-      LikeRepository.save(likeCreate)
+      const likeSave = await LikeRepository.save(likeCreate)
 
-      return response.send()
+      return response.json(LikeView.render(likeSave))
     } catch (e) {
       console.log(e)
       return response.status(400).send({ error: 'Error in create like, try again.' })

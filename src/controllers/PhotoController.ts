@@ -34,15 +34,15 @@ export default {
   async show (request: Request, response: Response) {
     try {
       const { id } = request.params
-      const { user } = request.body
-      const data = { id: parseInt(id, 10) || 0, user: `${user}` || '' }
+      const { userId } = request.body
+      const data = { id: parseInt(id, 10) || 0, user: parseInt(userId, 10) || 0 }
 
       const PhotoRepository = getRepository(Photo)
       const photoDB = await PhotoRepository.findOne({ id: data.id })
       if (!photoDB) { return response.status(400).send({ error: 'Photo not found.' }) }
 
       const UserRepository = getRepository(User)
-      const userDB = await UserRepository.findOne({ name: data.user })
+      const userDB = await UserRepository.findOne({ id: data.user })
       if (!userDB) { return response.status(400).send({ error: 'User not found.' }) }
 
       const LikeRepository = getRepository(Like)
