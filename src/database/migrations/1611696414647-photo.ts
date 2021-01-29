@@ -22,7 +22,7 @@ export class photo1611696414647 implements MigrationInterface {
         },
         {
           name: 'date',
-          type: 'string'
+          type: 'varchar'
         }
       ]
     }))
