@@ -13,7 +13,7 @@ export default {
       const { limit, page } = request.query
       const data = {
         limit: parseInt((limit ? limit.toString() : '10'), 10) || 10,
-        page: parseInt((page ? page.toString() : '10'), 10) || 1
+        page: parseInt((page ? page.toString() : '1'), 10) || 1
       }
 
       const PhotoRepository = getRepository(Photo)
