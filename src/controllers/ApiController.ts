@@ -15,7 +15,7 @@ interface PhotoApi {
 export default {
   async getApiRequest (request: Request, response: Response) {
     try {
-      const id = request.query
+      const { id } = request.query
       const data = { id: `${id}` || '' }
 
       if (data.id === process.env.KEY) {
